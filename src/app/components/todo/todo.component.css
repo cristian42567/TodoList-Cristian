@@ -18,6 +18,10 @@
     @apply absolute right-0 bg-background-100 text-lg font-black h-full px-2;
 }
 
+.new-todo button:hover{
+    @apply bg-blue-300;
+}
+
 .filters{
     @apply flex justify-end gap-2 my-2;
 }
