@@ -15,7 +15,7 @@
         @for (todo of todoList(); track todo.id) {
         @if (!todo.editing) {
         <li class="todo">
-            <input type="checkbox" [checked]="todo.completed">
+            <input type="checkbox" [checked]="todo.completed" (click)="toggleTodo(todo.id)">
             <label>{{todo.title}}</label>
             @if (!todo.completed) { <button>Editar</button>}       
             <button class="text-red-700">Eliminar</button>

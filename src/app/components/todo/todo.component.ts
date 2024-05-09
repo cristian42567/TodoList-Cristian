@@ -22,7 +22,7 @@ export class TodoComponent {
     {
       id: 2,
       title: 'Comprar pan',
-      completed: true,
+      completed: false,
       editing: false,
     },
     {
@@ -48,9 +48,9 @@ export class TodoComponent {
     const newTodoTitle = this.newTodo.value.trim();
     if (this.newTodo.valid && newTodoTitle !== '') {
       this.todoList.update((prev_todos) => {
-        return[
+        return [
           ...prev_todos,
-          {id: Date.now(), title: newTodoTitle, completed: false}
+          { id: Date.now(), title: newTodoTitle, completed: false }
         ];
       });
       this.newTodo.reset();
@@ -58,6 +58,16 @@ export class TodoComponent {
       this.newTodo.reset();
       alert('Por favor, introduce un texto en el campo de entrada.');
     }
+  }
+
+  toggleTodo(todoId: number) {
+    return this.todoList.update((prev_todos) =>
+      prev_todos.map((todo) => {
+
+        return todo.id === todoId? {...todo, completed: !todo.completed}
+        :todo;
+      })
+    )
   }
 
 }
